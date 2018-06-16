@@ -10,5 +10,10 @@ module.exports ={
   mongodb:{
     dbURI:"mongodb://hrabal2:test123@ds261430.mlab.com:61430/oauth-learn"
 
+  },
+
+  session:{
+    cookieKey:'Iamalbert'
   }
+
 };

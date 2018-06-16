@@ -3,7 +3,7 @@ const passport =require('passport');
 
 
 router.get('/login',(req,res)=>{
-  res.render('login');
+  res.render('login',{user:req.user});
 
 
 });
@@ -11,7 +11,9 @@ router.get('/login',(req,res)=>{
 // auth logout
 router.get('/logout',(req,res)=>{
   //handle with passport
-  res.send('logging out')
+  // res.send('logging out')
+  req.logout();
+  res.redirect('/');
 });
 
 // auth with google
@@ -20,7 +22,9 @@ router.get('/google', passport.authenticate('google', {
 }));
 
 router.get('/google/redirect',passport.authenticate('google'),(req,res)=>{
-  res.send('you reached the callback URI ya!!!')
+  // res.send(req.user);
+  res.redirect('/profile/')
+  // res.send('you reached the callback URI ya!!!')
 })
 
 module.exports = router;
